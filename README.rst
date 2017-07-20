@@ -112,7 +112,7 @@ We build the :code:`twisted` and :code:`msbdemo` wheels,
 togther with any recursive dependencies,
 into a Pex_ file -- a single file executable.
 
-.. Pex: https://pex.readthedocs.io/en/stable/
+.. _Pex: https://pex.readthedocs.io/en/stable/
 
 .. code::
 
