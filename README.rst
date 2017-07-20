@@ -147,3 +147,12 @@ Since we bound the Pex file to the :code:`-m twisted` package execution,
 all we need to is run the :code:`web` plugin,
 ask it to run a :code:`wsgi` container,
 and give it the logical (module) path to our WSGI app.
+
+Using Docker multi-stage builds has allowed us to create a Docker container
+for production with:
+
+* A smaller footprint (using the "slim" image as base)
+* Few layers (only adding two layers to the base slim image)
+
+The biggest benefit is that it let us do so with one Dockerfile,
+with no extra machinery.
