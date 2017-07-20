@@ -1,8 +1,22 @@
 Anatomy of a Multi-Stage Docker Build
 -------------------------------------
 
-TODO Introduction
+Docker_, in recent versions,
+has introduced `multi-stage build`.
+This allows separating the build environment from the runtime envrionment
+much more easily than before_
 
+.. _Docker: https://www.docker.com/
+.. _multi-stage build: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
+.. _before: https://orbifold.xyz/python-docker.html
+
+In order to demonstrate this,
+we will write a minimal Flask_ app and run it with Twisted_
+using its WSGI_ support.
+
+.. _Flask: http://flask.pocoo.org/
+.. _Twisted: https://twistedmatrix.com/trac/
+.. _WSGI: http://twistedmatrix.com/documents/current/web/howto/web-in-60/wsgi.html
 
 The Flask application itself is the smallest demo app,
 straight from any number of Flask tutorials:
@@ -18,7 +32,9 @@ straight from any number of Flask tutorials:
 
 The :code:`setup.py` file,
 similarly,
-is the minimal one from any number of Python packaging tutorials:
+is the minimal one from any number of `Python packaging`_ tutorials:
+
+.. _Python packaging: https://packaging.python.org/tutorials/distributing-packages/#setup-py
 
 .. code::
 
@@ -42,7 +58,7 @@ It is interesting enough that we will go through it line by line:
 
 We start from a "fat" Python docker image --
 one with the Python headers installed,
-and the ability to compile extension.
+and the ability to compile extensions.
 
 .. code::
 
@@ -55,8 +71,10 @@ We create a custom virtual environment for the build process.
     RUN /buildenv/bin/pip install pex wheel
 
 We install the build tools --
-in this case, :code:`wheel`, which will let us build wheels,
+in this case, :code:`wheel`, which will let us build wheels_,
 and :code:`pex`, which will let us build single file executables.
+
+.. _wheels: https://wheel.readthedocs.io/en/latest/
 
 .. code::
 
@@ -81,8 +99,9 @@ into the docker image.
 
 We build the wheels.
 We take care to manually build wheels ourselves,
-since :code:`pex`, right now, cannot handle manylinux binary wheels.
+since :code:`pex`, right now, cannot handle manylinux_ binary wheels.
 
+.. _manylinux: https://www.python.org/dev/peps/pep-0513/
 
 .. code::
 
@@ -91,8 +110,9 @@ since :code:`pex`, right now, cannot handle manylinux binary wheels.
 
 We build the :code:`twisted` and :code:`msbdemo` wheels,
 togther with any recursive dependencies,
-into a Pex file -- a single file executable.
+into a Pex_ file -- a single file executable.
 
+.. Pex: https://pex.readthedocs.io/en/stable/
 
 .. code::
 
