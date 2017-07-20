@@ -4,7 +4,7 @@ Anatomy of a Multi-Stage Docker Build
 Docker_, in recent versions,
 has introduced `multi-stage build`.
 This allows separating the build environment from the runtime envrionment
-much more easily than before_
+much more easily than before_.
 
 .. _Docker: https://www.docker.com/
 .. _multi-stage build: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
