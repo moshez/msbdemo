@@ -7,5 +7,5 @@ setuptools.setup(
     author='Moshe Zadka',
     author_email='zadka.moshe@gmail.com',
     packages=setuptools.find_packages(),
-    install_requires=['Twisted', 'flask'],
+    install_requires=['flask'],
 )
