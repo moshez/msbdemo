@@ -3,4 +3,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello world, I am Flask!"
+    return "If you are seeing this, the multi-stage build succeeded"
