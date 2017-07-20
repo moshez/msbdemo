@@ -9,4 +9,4 @@ RUN /buildenv/bin/pex --find-links /wheels --no-index \
 
 FROM python:2.7.13-slim
 COPY --from=0 /mnt/src/twist.pex /root
-ENTRYPOINT ["/root/twist.pex", "sayhello", "--port", "tcp:80"]
+ENTRYPOINT ["/root/twist.pex", "web", "--wsgi", "msbdemo.wsgi.app", "--port", "tcp:80"]
