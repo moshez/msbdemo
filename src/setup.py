@@ -6,6 +6,6 @@ setuptools.setup(
     url='https://github.com/moshez/twist-wsgi',
     author='Moshe Zadka',
     author_email='zadka.moshe@gmail.com',
-    packages=setuptools.find_packages() + ['twisted.plugins'],
+    packages=setuptools.find_packages(),
     install_requires=['Twisted', 'flask'],
 )
